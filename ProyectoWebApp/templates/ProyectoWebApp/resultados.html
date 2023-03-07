@@ -1,0 +1,47 @@
+{% extends 'ProyectoWebApp/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+<div class="row">
+{% if resultados %} 
+{% for resultad in resultados %}
+{% for ani, value in diccionario.items %}
+{% if ani == resultad.no_animal %}
+<div class="col-md-3" style="width: 100%; text-align: center;">
+<div style="width: 100%; text-align: center;">
+    <h1><div class="card-header"><p class="text-warning"></p></div></h1>
+    <div class="card-body">
+        <img class="border border-warning rounded-circle" src="{% static 'ProyectoWebApp/imagenes/' %}{{ value }}.jpg" alt="Cinque Terre" style="width: 100%;">
+       
+      </div> 
+    
+    <h1 class="text-warning">{{ resultad.loteria }}<p>{{resultad.no_animal }} - {{ value }}</p></h1>
+
+</div>
+</div>
+
+{% endif %}
+{% endfor %}
+{% endfor %} 
+{% else %} 
+<section class="page-section clearfix">
+    <div class="container">
+      <div class="intro">
+        <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'ProyectoWebApp/img/ruleta1.jpg' %}" alt="">
+        <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+          <h2 class="section-heading mb-4" >
+            <span class="section-heading-upper"></span>
+            <span class="section-heading-lower">En espera de los resultados</span>
+          </h2>
+          <p class="mb-3">
+          </p>
+         
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}                  
+</div>
+</div>
+{% endblock %}
